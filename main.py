@@ -24,6 +24,7 @@ while True:
         if publicChoice == 1:
             publicMessage = int(input("Enter a message: "))
             print("Message encrypted and sent")
+            #CODE HERE
             
         if publicChoice == 2:
             if signature is None:
@@ -31,6 +32,7 @@ while True:
             else:
                 print("The following messages are available: ")
                 print("\n1. ", signature)
+                #CODE HERE
         
         if publicChoice == 3:
             userType = 0
