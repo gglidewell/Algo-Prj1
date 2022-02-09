@@ -22,8 +22,6 @@ def pubGen():
     
     p = primeGen()
     q = primeGen()
-    print("p:", p)
-    print("q:", q)
     key.n = p*q
     key.phi = (p-1)*(q-1)
     key.e = eGen(key.n, key.phi)

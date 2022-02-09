@@ -8,7 +8,6 @@ messageChoice = 0
 publicMessage = ""
 privateMessage = ""
 signature = ""
-#TODO: SIMPLIFY PUBLIC KEYGEN TO KEYGEN.PY, MAYBE STRUCT? -h
 
 pkey = pubGen()
 n = pkey.n
