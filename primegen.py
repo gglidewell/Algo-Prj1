@@ -1,15 +1,44 @@
-def primeGen():
-    # referenced from https://www.delftstack.com/howto/python/python-generate-prime-number/#:~:text=Under%20the%20Python%20random%20module,choice()%20.
-    primes = []
-    for n in range(0, 99):
-        prime = True
-        
-        for num in range(2, n):
-            if n % num == 0:
-                prime = False
-                
-        if prime:
-            primes.append(n)
+import random
+
+def power(a, n, p):
+    res = 1
+    
+    a = a % p
+    
+    while n > 0:
+        if n % 2:
+            res = (res * a) % p
+            n = n-1
+        else:
+            a = (a ** 2) % p
             
-    return primes    
+            n = n // 2
+    return res % p
+
+def isPrime(n, k):
+    
+    if n == 1 or n == 4:
+        return False
+    elif n == 2 or n == 3:
+        return True
+    
+    else:
+        for i in range(k):
+            
+            a = random.randint(2, n-2)
+            if power(a, n-1, n) != 1:
+                return False
+    return True
+
+def primeGen():
+    k = 3
+    prime = False
+    
+    while not prime:
+        num = random.randint(100000, 999999)
+        if isPrime(num, k):
+            return num
+    
+    
+
             

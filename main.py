@@ -1,7 +1,6 @@
-from primegen import primeGen
-from keygen import eGen
 from keygen import privGen
-import random
+from keygen import pubGen
+
 userType = 0
 publicChoice = 0
 privateChoice = 0
@@ -9,23 +8,15 @@ messageChoice = 0
 publicMessage = ""
 privateMessage = ""
 signature = ""
-p = 0;
-q = 0;
-n = 0;
-phi = 0
-privKey = 0
 #TODO: SIMPLIFY PUBLIC KEYGEN TO KEYGEN.PY, MAYBE STRUCT? -h
 
-p = random.choice(primeGen())
-q = random.choice(primeGen())
-n = p*q
-phi = (p-1)*(q-1)
-e = eGen(n, phi)
+pkey = pubGen()
+n = pkey.n
+e = pkey.e
+phi = pkey.phi
 privKey = privGen(phi, e)
 
 #TODO: REMOVE LATER
-print("p:", p)
-print("q:", q)
 print("n:", n)
 print("phi:", phi)
 print("e:", e)
