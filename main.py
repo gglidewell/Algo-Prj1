@@ -1,5 +1,7 @@
 from keygen import privGen
 from keygen import pubGen
+from encrypt import encrypt
+from decrypt import decrypt
 
 userType = 0
 publicChoice = 0
@@ -37,9 +39,9 @@ while True:
         publicChoice = int(input("Enter your choice: "))
         
         if publicChoice == 1:
-            publicMessage = int(input("Enter a message: "))
+            publicMessage = input("Enter a message: ")
             print("Message encrypted and sent")
-            #CODE HERE
+            privateMessage = encrypt(publicMessage, e, n)
             
         if publicChoice == 2:
             if signature is None:
@@ -64,12 +66,13 @@ while True:
                 print("There are no messages available")
             else:
                 print("The following messages are available: ")
-                print("\n1. (length = ", len(privateMessage), ")")
-                messageChoice = input("Enter your choice: ")
+                print("\n1. (length = ", len(str(privateMessage)), ")")
+                messageChoice = int(input("Enter your choice: "))
                 
                 if messageChoice == 1:
-                    print("Decrypted message: ")
-                    #CODE HERE
+                    de = decrypt(privateMessage, privKey, n)
+                    print("Decrypted message: ", de)
+                    
                 
         if privateChoice == 2:
             privateMessage = input("Enter a message: ")
