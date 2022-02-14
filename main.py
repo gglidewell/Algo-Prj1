@@ -1,12 +1,17 @@
 from keygen import privGen
 from keygen import pubGen
+from encrypt import encrypt
+from decrypt import decrypt
 
 userType = 0
 publicChoice = 0
 privateChoice = 0
 messageChoice = 0
+messageCount = 0
 publicMessage = ""
 privateMessage = ""
+publicList = [""] * 10
+privateList = [""] * 10
 signature = ""
 
 pkey = pubGen()
@@ -37,17 +42,21 @@ while True:
         publicChoice = int(input("Enter your choice: "))
         
         if publicChoice == 1:
-            publicMessage = int(input("Enter a message: "))
+            publicMessage = input("Enter a message: ")
+            publicList[messageCount] = publicMessage
             print("Message encrypted and sent")
-            #CODE HERE
+            privateMessage = encrypt(publicMessage, e, n)
+            privateList[messageChoice] = privateMessage
+            messageCount+=1
             
         if publicChoice == 2:
             if signature is None:
                 print("There are no signature to authenticate")
             else:
                 print("The following messages are available: ")
-                print("\n1. ", signature)
-                #CODE HERE
+                for x in range(messageCount):
+                    print(x + 1, ". ", signature)
+                    #MORE CODE HERE
         
         if publicChoice == 3:
             userType = 0
@@ -64,12 +73,15 @@ while True:
                 print("There are no messages available")
             else:
                 print("The following messages are available: ")
-                print("\n1. (length = ", len(privateMessage), ")")
-                messageChoice = input("Enter your choice: ")
+                for x in range(messageCount):
+                    print(x + 1, ". (Length = ", len(privateList[x], ")"))
+                
+                messageChoice = int(input("Enter your choice: "))
                 
                 if messageChoice == 1:
-                    print("Decrypted message: ")
-                    #CODE HERE
+                    de = decrypt(privateMessage, privKey, n)
+                    print("Decrypted message: ", de)
+                    
                 
         if privateChoice == 2:
             privateMessage = input("Enter a message: ")
