@@ -18,7 +18,7 @@ pkey = pubGen()
 n = pkey.n
 e = pkey.e
 phi = pkey.phi
-privKey = privGen(phi, e)
+privKey = privGen(e, phi)
 
 #TODO: REMOVE LATER
 print("n:", n)
