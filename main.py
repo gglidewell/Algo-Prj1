@@ -74,7 +74,7 @@ while True:
             else:
                 print("The following messages are available: ")
                 for x in range(messageCount):
-                    print(x + 1, ". (Length = ", len(privateList[x], ")"))
+                    print(x + 1, "Message #", x + 1, ": ")
                 
                 messageChoice = int(input("Enter your choice: "))
                 
