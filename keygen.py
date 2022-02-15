@@ -7,6 +7,22 @@ class publicKey:
     e = 0
     phi = 0
 
+def eGen(phi):
+    e = 3
+
+    while e <= phi:
+        a = phi
+        b = e
+
+        while b:
+            a, b = b, a % b
+
+        if a == 1:
+            return e
+        else:
+            e += 2
+
+
 def pubGen():
     key = publicKey()
     
@@ -14,15 +30,13 @@ def pubGen():
     q = primeGen()
     key.n = p*q
     key.phi = (p-1)*(q-1)
+    e = eGen(key.phi)
     
-    #E GEN
-    for i in range(key.phi):
-        if(math.gcd(i, key.phi) == 1 and i > 1):
-            key.e = i
-            break
     return key
     
 
+
 def privGen(phi,e):
-    d = pow(e, -1)
+    #TEMP
+    d = pow(e, 1)
     return int(d)
