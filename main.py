@@ -13,12 +13,13 @@ privateMessage = ""
 publicList = [""] * 10
 privateList = [""] * 10
 signature = ""
+sigList = []
 
 pkey = pubGen()
 n = pkey.n
 e = pkey.e
 phi = pkey.phi
-privKey = privGen(phi, e)
+privKey = privGen(e, phi)
 
 #TODO: REMOVE LATER
 print("n:", n)
@@ -50,12 +51,12 @@ while True:
             messageCount+=1
             
         if publicChoice == 2:
-            if signature is None:
+            if sigList is None:
                 print("There are no signature to authenticate")
             else:
                 print("The following messages are available: ")
                 for x in range(messageCount):
-                    print(x + 1, ". ", signature)
+                    print(x + 1, ". ", sigList[x])
                     #MORE CODE HERE
         
         if publicChoice == 3:
@@ -74,7 +75,7 @@ while True:
             else:
                 print("The following messages are available: ")
                 for x in range(messageCount):
-                    print(x + 1, ". (Length = ", len(privateList[x], ")"))
+                    print(x + 1, "Message #", x + 1, ": ")
                 
                 messageChoice = int(input("Enter your choice: "))
                 
