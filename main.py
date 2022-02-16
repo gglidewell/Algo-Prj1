@@ -17,7 +17,7 @@ signature = ""
 sigChoice = 0
 encSig = ""
 sigList = []
-decSig = ""
+count = 1
 
 pkey = pubGen()
 n = pkey.n
@@ -60,7 +60,9 @@ while True:
             else:
                 print("The following messages are available: ")
                 for x in sigList:
-                    print(x + 1, ". ", sigList[x])
+                    print(count, ". ", x)
+                    count+=1
+                 #MORE WORK HERE   
                 sigChoice = input("Enter your choice: ")
                 encSig = sigList[sigChoice]
                 decSig = SigDecrypt(e, n)
