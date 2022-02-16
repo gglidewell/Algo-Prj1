@@ -65,7 +65,6 @@ while True:
                 for x in sigList:
                     print(count, ". ", x)
                     count+=1
-                 #MORE WORK HERE   
                 sigChoice = input("Enter your choice: ")
                 decSig = sDecrypt(sigEnc, e, n)
                 print("Decrypted: ", decSig, " Encrypted", numSig)
