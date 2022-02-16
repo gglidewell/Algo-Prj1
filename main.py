@@ -18,7 +18,7 @@ pkey = pubGen()
 n = pkey.n
 e = pkey.e
 phi = pkey.phi
-privKey = privGen(e, phi)
+privKey = privGen(phi, e)
 
 #TODO: REMOVE LATER
 print("n:", n)
@@ -74,7 +74,7 @@ while True:
             else:
                 print("The following messages are available: ")
                 for x in range(messageCount):
-                    print(x + 1, "Message #", x + 1, ": ")
+                    print(x + 1, ". (Length = ", len(privateList[x], ")"))
                 
                 messageChoice = int(input("Enter your choice: "))
                 
