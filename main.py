@@ -67,7 +67,8 @@ while True:
                  #MORE WORK HERE   
                 sigChoice = input("Enter your choice: ")
                 decSig = sDecrypt(sigEnc, e, n)
-                if encSig == decSig:
+                print("Decrypted: ", decSig, " Encryted", numSig)
+                if numSig == decSig:
                     print("Signature is Valid")
                 else:
                     print("Signature is not Valid")
