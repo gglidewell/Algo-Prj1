@@ -2,6 +2,7 @@ from keygen import privGen
 from keygen import pubGen
 from encrypt import encrypt
 from decrypt import decrypt
+from digitalsignature import *
 
 userType = 0
 publicChoice = 0
@@ -13,7 +14,10 @@ privateMessage = ""
 publicList = [""] * 10
 privateList = [""] * 10
 signature = ""
+sigChoice = 0
+encSig = ""
 sigList = []
+decSig = ""
 
 pkey = pubGen()
 n = pkey.n
@@ -51,14 +55,20 @@ while True:
             messageCount+=1
             
         if publicChoice == 2:
-            if sigList is None:
+            if len(sigList) == 0:
                 print("There are no signature to authenticate")
             else:
                 print("The following messages are available: ")
-                for x in range(messageCount):
+                for x in sigList:
                     print(x + 1, ". ", sigList[x])
-                    #MORE CODE HERE
-        
+                sigChoice = input("Enter your choice: ")
+                encSig = sigList[sigChoice]
+                decSig = SigDecrypt(e, n)
+                if encSig == decSig:
+                    print("Signature is Valid")
+                else:
+                    print("Signature is not Valid")
+                    
         if publicChoice == 3:
             userType = 0
                 
@@ -85,8 +95,9 @@ while True:
                     
                 
         if privateChoice == 2:
-            privateMessage = input("Enter a message: ")
-            #CODE HERE
+            signature = input("Enter a message: ")
+            sigList.append(signature)
+            SigEncrypt(signature, privKey, n)
             print("Message signed and sent")
             
         if privateChoice == 3:
