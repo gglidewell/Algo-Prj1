@@ -1,11 +1,5 @@
-def SigEncrypt(sig, d, n):
-     for x in sig:
-        x = pow(ord(x),d,n)
-        auth.append(x)
+#Signature Generation
+S = (c**d) % n
 
-def SigDecrypt(e, n):
-    name = ""
-    for x in auth:
-        x = pow(x,e,n)
-        name += chr(x)
-    return(name)
+#Signature Verification
+I = (S**e) % n
