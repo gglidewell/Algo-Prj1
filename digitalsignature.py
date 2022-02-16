@@ -1,7 +1,6 @@
 #Signature Generation
 def sEncrypt(c, d, n):
     s = pow(int(c),d,n)
-    print(s)
     return s
 
 #Signature Verification
