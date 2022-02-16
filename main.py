@@ -19,6 +19,7 @@ sigList = []
 sigEnc = 0
 sigDec = 0
 count = 1
+numSig = ""
 
 pkey = pubGen()
 n = pkey.n
@@ -99,7 +100,8 @@ while True:
         if privateChoice == 2:
             signature = input("Enter a message: ")
             sigList.append(signature)
-            numSig = encrypt(signature, e, n)
+            for x in signature:
+                numSig += str(ord(x) - 96)
             sigEnc = sEncrypt(numSig, privKey, n)
             print("Message signed and sent")
             
