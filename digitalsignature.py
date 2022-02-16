@@ -1,10 +1,10 @@
-import math
 #Signature Generation
 def sEncrypt(c, d, n):
-    S = pow(c,d) % n
-    return S
+    s = pow(int(c),d,n)
+    print(s)
+    return s
 
 #Signature Verification
-def sDecrypt(S, e, n):
-    I = pow(S,e) % n
-    return I
+def sDecrypt(s, e, n):
+    i = pow(s,e,n)
+    return i
