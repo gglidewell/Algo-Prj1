@@ -15,8 +15,9 @@ publicList = [""] * 10
 privateList = [""] * 10
 signature = ""
 sigChoice = 0
-encSig = ""
 sigList = []
+sigEnc = 0
+sigDec = 0
 count = 1
 
 pkey = pubGen()
@@ -64,8 +65,7 @@ while True:
                     count+=1
                  #MORE WORK HERE   
                 sigChoice = input("Enter your choice: ")
-                encSig = sigList[sigChoice]
-                decSig = SigDecrypt(e, n)
+                decSig = sDecrypt(sigEnc, e, n)
                 if encSig == decSig:
                     print("Signature is Valid")
                 else:
@@ -99,7 +99,8 @@ while True:
         if privateChoice == 2:
             signature = input("Enter a message: ")
             sigList.append(signature)
-            SigEncrypt(signature, privKey, n)
+            numSig = encrypt(signature, e, n)
+            sigEnc = sEncrypt(numSig, privKey, n)
             print("Message signed and sent")
             
         if privateChoice == 3:
