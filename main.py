@@ -27,12 +27,6 @@ e = pkey.e
 phi = pkey.phi
 privKey = privGen(e, phi)
 
-#TODO: REMOVE LATER
-print("n:", n)
-print("phi:", phi)
-print("e:", e)
-print("privkey: ", privKey)
-
 
 print("RSA Keys has been generated")
 while True:
@@ -110,4 +104,5 @@ while True:
             userType = 0
                 
     if userType == 3:
+        print("Goodbye Dr. Hu :)")
         break
